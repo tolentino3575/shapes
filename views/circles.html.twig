@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Circles</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Circles</h1>
+            </div>
+            {% if circles is not empty %}
+                <h3>Here are the current circles. Click to view their radius.</h3>
+                {% for circle in circles %}
+                <ul>
+                    <a href="/circle/{{ circle.getCircleId }}">{{ circle.getCircleName }}</a> - Radius: {{ circle.getCircleRadius }} cm
+                </ul>
+                {% endfor %}
+            {% endif %}
+            {% if circles is empty %}
+                <h3>There are currently no circles</h3>
+                <h4>Add one!</h4>
+            {% endif %}
+            <br>
+            <h3>New Circle</h3>
+            <form action="/add_circle" method="post">
+                <label for="circle_name">Circle's name:</label>
+                <input id="circle_name" name="circle_name" required>
+                <label for="circle_radius">What is the radius?</label>
+                <input id="circle_radius" name="circle_radius" required>
+                <button type="submit" class="btn btn-success">Create new circle</button>
+            </form>
+            <br>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>
