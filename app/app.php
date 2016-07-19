@@ -3,6 +3,7 @@
     require_once __DIR__."/../src/Circle.php";
     require_once __DIR__."/../src/Square.php";
     require_once __DIR__."/../src/Rectangle.php";
+    require_once __DIR__."/../src/Triangle.php";
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
@@ -132,6 +133,43 @@
     });
 
     //Triangle
+    $app->get('/triangles', function() use ($app){
+        return $app['twig']->render('/triangle/triangles.html.twig', array('triangles' => Triangle::getAll()));
+    });
+
+    $app->post('/add_triangle', function() use ($app){
+        $triangle_name = $_POST['triangle_name'];
+        $triangle_base = $_POST['triangle_base'];
+        $triangle_height = $_POST['triangle_height'];
+        $id = null;
+        $new_triangle = new Triangle($triangle_name, $triangle_base, $triangle_height, $id);
+        $new_triangle->saveTriangle();
+        return $app['twig']->render('/triangle/triangles.html.twig', array('triangles' => Triangle::getAll()));
+    });
+
+    $app->get('/triangle/{id}', function($id) use ($app){
+        $triangle = Triangle::findTriangle($id);
+        return $app['twig']->render('/triangle/triangle.html.twig', array('triangle' => $triangle));
+    });
+
+    $app->get('/triangle/{id}/edit', function($id) use($app){
+        $triangle = Triangle::findTriangle($id);
+        return $app['twig']->render('/triangle/triangle_edit.html.twig', array('triangle' => $triangle));
+    });
+
+    $app->patch('/triangle/{id}', function($id) use ($app){
+        $new_triangle_name = $_POST['new_triangle_name'];
+        $new_triangle_base = $_POST['new_triangle_base'];
+        $new_triangle_height = $_POST['new_triangle_height'];
+        $triangle = Triangle::findTriangle($id);
+        $triangle->updateTriangle($new_triangle_name, $new_triangle_base, $new_triangle_height);
+        return $app['twig']->render('/triangle/triangle.html.twig', array('triangle' => $triangle));
+    });
+
+    $app->get('/triangles_home', function() use ($app){
+        return $app['twig']->render('/triangle/triangles.html.twig', array('triangles' => Triangle::getAll()));
+    });
+
 
     return $app;
  ?>

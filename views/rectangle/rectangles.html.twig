@@ -16,7 +16,9 @@
                 {% if rectangles is not empty %}
                     <h3>Here are the current rectangles. Click to view their dimensions.</h3>
                     {% for rectangle in rectangles %}
-                        <a href="/rectangle/{{ rectangle.getRectangleId }}">{{ rectangle.getRectangleName }}</a>
+                        <ul>
+                            <a href="/rectangle/{{ rectangle.getRectangleId }}">{{ rectangle.getRectangleName }}</a>
+                        </ul>
                     {% endfor %}
                 {% endif %}
                 {% if rectangles is empty %}

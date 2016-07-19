@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Triangles</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Triangles</h1>
+            </div>
+            <div>
+                {% if triangles is not empty %}
+                    <h3>Here are the current triangles. Click to view their dimensions.</h3>
+                    {% for triangle in triangles %}
+                        <ul>
+                            <a href="/triangle/{{ triangle.getTriangleId }}">{{ triangle.getTriangleName }}</a>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+                {% if triangles is empty %}
+                    <h3>There are currently no triangles</h3>
+                    <h4>Add one!</h4>
+                {% endif %}
+                <h3>New Triangle</h3>
+                <form action="/add_triangle" method="post">
+                    <label for="triangle_name">Triangle Name:</label>
+                    <input id="triangle_name" name="triangle_name" required>
+                    <label for="triangle_base">Triangle Base:</label>
+                    <input id="triangle_base" name="triangle_base" required>
+                    <label for="triangle_height">Triangle Height:</label>
+                    <input id="triangle_height" name="triangle_height" required>
+                    <button type="submit" class="btn btn-success">Create new triangle</button>
+                </form>
+                <br>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </body>
+</html>
