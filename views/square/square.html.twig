@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Circle</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>A Square</h1>
+            </div>
+            <h3>Square "{{ square.getSquareName }}" has a width of {{ square.getSquareWidth }} in.</h3>
+            <a href="/square/{{square.getSquareId}}/edit">Edit this square</a>
+            <br>
+            <br>
+            <a href="/squares_home">View Squares</a>
+            <br>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>
