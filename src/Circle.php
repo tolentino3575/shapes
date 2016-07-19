@@ -1,5 +1,4 @@
 <?php
-
     class Circle
     {
         private $circle_name;
@@ -45,7 +44,7 @@
             $this->id=$GLOBALS['DB']->lastInsertId();
         }
 
-        static function getAll()
+        function getAll()
         {
             $returned_circle = $GLOBALS['DB']->query("SELECT * FROM circles");
             $circles = array();
@@ -60,12 +59,12 @@
             return $circles;
         }
 
-        static function deleteAll()
+        function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM circles");
         }
 
-        static function findCircle($search_id)
+        function findCircle($search_id)
         {
             $found_circle = null;
             $circles = Circle::getAll();

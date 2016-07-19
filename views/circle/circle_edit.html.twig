@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
         <link rel="stylesheet" href="/css/styles.css" type="text/css">
         <meta charset="utf-8">
-        <title></title>
+        <title>Circle Edit</title>
     </head>
     <body>
         <div class="container">
@@ -15,11 +15,17 @@
             <h3>Current radius: {{ circle.getCircleRadius }} cm.</h3>
             <form action='/circle/{{circle.getCircleId }}' method='post'>
                 <input name='_method' type='hidden' value='patch'>
-                <label for='edit_circle_name'>New circle name:</label>
-                <input id='new_circle_name' name='new_circle_name'>
-                <label for='edit_circle_radius'>New circle radius:</label>
-                <input id='new_circle_radius' name='new_circle_radius'>
-                <button type='submit' class='btn btn-success'>Edit</button>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for='edit_circle_name'>New circle name:</label>
+                        <input id='new_circle_name' name='new_circle_name' required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for='edit_circle_radius'>New circle radius:</label>
+                        <input id='new_circle_radius' name='new_circle_radius' required>
+                    </div>
+                    <button type='submit' class='btn btn-success'>Edit</button>
+                </div>
             </form>
         </div>
     </body>

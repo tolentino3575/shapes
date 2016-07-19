@@ -1,6 +1,5 @@
 <?php
-
-class Rectangle
+    class Rectangle
     {
         private $rectangle_name;
         private $rectangle_length;
@@ -75,12 +74,12 @@ class Rectangle
             return $rectangles;
         }
 
-        static function deleteAll()
+        function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM rectangles");
         }
 
-        static function findRectangle($search_id)
+        function findRectangle($search_id)
         {
             $found_rectangle = null;
             $rectangles = Rectangle::getAll();
@@ -102,9 +101,9 @@ class Rectangle
                 rectangle_length = '{$new_rectangle_length}',
                 rectangle_width = '{$new_rectangle_width}'
                 WHERE id = {$this->getRectangleId()};");
-                $this->setRectangleName($new_rectangle_name);
-                $this->setRectangleLength($new_rectangle_length);
-                $this->setRectangleWidth($new_rectangle_width);
+            $this->setRectangleName($new_rectangle_name);
+            $this->setRectangleLength($new_rectangle_length);
+            $this->setRectangleWidth($new_rectangle_width);
         }
     }
 

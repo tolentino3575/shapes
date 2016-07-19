@@ -170,6 +170,5 @@
         return $app['twig']->render('/triangle/triangles.html.twig', array('triangles' => Triangle::getAll()));
     });
 
-
     return $app;
  ?>

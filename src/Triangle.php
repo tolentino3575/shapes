@@ -100,10 +100,10 @@
                 triangle_name = '{$new_triangle_name}',
                 triangle_base = '{$new_triangle_base}',
                 triangle_height = '{$new_triangle_height}'
-                WHERE is = {$this->getTriangleId()};");
-                $this->setTriangleName($new_triangle_name);
-                $this->setTriangleBase($new_triangle_base);
-                $this->setTriangleHeight($new_triangle_height);
+                WHERE id = {$this->getTriangleId()};");
+            $this->setTriangleName($new_triangle_name);
+            $this->setTriangleBase($new_triangle_base);
+            $this->setTriangleHeight($new_triangle_height);
         }
     }
 

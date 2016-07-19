@@ -1,5 +1,4 @@
 <?php
-
     class Square
     {
         private $square_name;
@@ -60,7 +59,7 @@
             return $squares;
         }
 
-        static function deleteAll()
+        function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM squares");
         }
@@ -83,9 +82,9 @@
         function updateSquare($new_square_name, $new_square_width)
         {
             $GLOBALS['DB']->exec("UPDATE squares SET
-            square_name = '{$new_square_name}',
-            square_width = '{$new_square_width}'
-            WHERE id = {$this->getSquareId()};");
+                square_name = '{$new_square_name}',
+                square_width = '{$new_square_width}'
+                WHERE id = {$this->getSquareId()};");
             $this->setSquareName($new_square_name);
             $this->setSquareWidth($new_square_width);
         }

@@ -24,13 +24,20 @@
                 <h3>There are currently no squares</h3>
                 <h4>Add one!</h4>
             {% endif %}
+            <br>
             <h3>New Square</h3>
             <form action="/add_square" method="post">
-                <label for="square_name">Square Name:</label>
-                <input id="square_name" name="square_name" required>
-                <label for="square_width">What is the width?</label>
-                <input id="square_width" name="square_width" required>
-                <button type="submit" class="btn btn-success">Create new circle</button>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="square_name">Square Name:</label>
+                        <input id="square_name" name="square_name" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="square_width">Square width:</label>
+                        <input id="square_width" name="square_width" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Create new square</button>
+                </div>
             </form>
             <br>
             <a href="/">Home</a>

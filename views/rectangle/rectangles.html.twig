@@ -22,18 +22,27 @@
                     {% endfor %}
                 {% endif %}
                 {% if rectangles is empty %}
-                    <h3>There are currently no squares</h3>
+                    <h3>There are currently no rectangles</h3>
                     <h4>Add one!</h4>
                 {% endif %}
+                <br>
                 <h3>New Rectangle</h3>
                 <form action="/add_rectangle" method="post">
-                    <label for="rectangle_name">Rectangle Name:</label>
-                    <input id="rectangle_name" name="rectangle_name" required>
-                    <label for="rectangle_length">Rectangle Length:</label>
-                    <input id="rectangle_length" name="rectangle_length" required>
-                    <label for="rectangle_width">Rectangle Width:</label>
-                    <input id="rectangle_width" name="rectangle_width" required>
-                    <button type="submit" class="btn btn-success">Create new rectangle</button>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="rectangle_name">Rectangle Name:</label>
+                            <input id="rectangle_name" name="rectangle_name" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="rectangle_length">Rectangle Length:</label>
+                            <input id="rectangle_length" name="rectangle_length" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="rectangle_width">Rectangle Width:</label>
+                            <input id="rectangle_width" name="rectangle_width" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Create new rectangle</button>
+                    </div>
                 </form>
                 <br>
                 <a href="/">Home</a>

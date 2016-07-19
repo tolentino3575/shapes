@@ -25,15 +25,24 @@
                     <h3>There are currently no triangles</h3>
                     <h4>Add one!</h4>
                 {% endif %}
+                <br>
                 <h3>New Triangle</h3>
                 <form action="/add_triangle" method="post">
-                    <label for="triangle_name">Triangle Name:</label>
-                    <input id="triangle_name" name="triangle_name" required>
-                    <label for="triangle_base">Triangle Base:</label>
-                    <input id="triangle_base" name="triangle_base" required>
-                    <label for="triangle_height">Triangle Height:</label>
-                    <input id="triangle_height" name="triangle_height" required>
-                    <button type="submit" class="btn btn-success">Create new triangle</button>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="triangle_name">Triangle Name:</label>
+                            <input id="triangle_name" name="triangle_name" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="triangle_base">Triangle Base:</label>
+                            <input id="triangle_base" name="triangle_base" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="triangle_height">Triangle Height:</label>
+                            <input id="triangle_height" name="triangle_height" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Create new triangle</button>
+                    </div>
                 </form>
                 <br>
                 <a href="/">Home</a>
