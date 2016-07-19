@@ -131,5 +131,7 @@
         return $app['twig']->render('/rectangle/rectangles.html.twig', array('rectangles' => Rectangle::getAll()));
     });
 
+    //Triangle
+
     return $app;
  ?>
