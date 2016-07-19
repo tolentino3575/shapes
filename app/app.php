@@ -113,7 +113,19 @@
         return $app['twig']->render('/rectangle/rectangle.html.twig', array('rectangle' => $rectangle));
     });
 
-    //patch
+    $app->get('/rectangle/{id}/edit', function($id) use ($app){
+        $rectangle = Rectangle::findRectangle($id);
+        return $app['twig']->render('/rectangle/rectangle_edit.html.twig', array('rectangle' => $rectangle));
+    });
+
+    $app->patch('/rectangle/{id}', function($id) use ($app){
+        $new_rectangle_name = $_POST['new_rectangle_name'];
+        $new_rectangle_length = $_POST['new_rectangle_length'];
+        $new_rectangle_width = $_POST['new_rectangle_width'];
+        $rectangle = Rectangle::findRectangle($id);
+        $rectangle->updateRectangle($new_rectangle_name, $new_rectangle_length, $new_rectangle_width);
+        return $app['twig']->render('/rectangle/rectangle.html.twig', array('rectangle' => $rectangle));
+    });
 
     $app->get('/rectangles_home', function() use ($app){
         return $app['twig']->render('/rectangle/rectangles.html.twig', array('rectangles' => Rectangle::getAll()));

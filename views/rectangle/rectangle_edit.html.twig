@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Rectangle Edit</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Edit rectangle {{ rectangle.getRectangleName }}</h1>
+            </div>
+            <div>
+                <h3>Current length: {{ rectangle.getRectangleLength }} in.</h3>
+                <h3>Current width: {{ rectangle.getRectangleWidth }} in.</h3>
+                <form action='/rectangle/{{ rectangle.getRectangleId }}' method='post'>
+                <input name='_method' type='hidden' value='patch'>
+                <label for='edit_rectangle_name'>New rectangle name:</label>
+                <input id='new_rectangle_name' name='new_rectangle_name'>
+                <label for='edit_rectangle_length'>New rectangle length:</label>
+                <input id='new_rectangle_length' name='new_rectangle_length'>
+                <label for='edit_rectangle_width'>New rectangle width:</label>
+                <input id='new_rectangle_width' name='new_rectangle_width'>
+                <button type='submit' class='btn btn-success'>Edit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
