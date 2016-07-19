@@ -49,7 +49,8 @@
         {
             $returned_circle = $GLOBALS['DB']->query("SELECT * FROM circles");
             $circles = array();
-            foreach($returned_circle as $circle) {
+            foreach($returned_circle as $circle)
+            {
                 $circle_name = $circle['circle_name'];
                 $circle_radius = $circle['circle_radius'];
                 $id = $circle['id'];
@@ -88,6 +89,5 @@
             $this->setCircleName($new_circle_name);
             $this->setCircleRadius($new_circle_radius);
         }
-
     }
 ?>

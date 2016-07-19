@@ -2,6 +2,7 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Circle.php";
     require_once __DIR__."/../src/Square.php";
+    require_once __DIR__."/../src/Rectangle.php";
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
@@ -90,6 +91,32 @@
 
     $app->get('/squares_home', function() use ($app){
         return $app['twig']->render('/square/squares.html.twig', array('squares' => Square::getAll()));
+    });
+
+    //Rectangle
+    $app->get('/rectangles', function() use ($app){
+        return $app['twig']->render('/rectangle/rectangles.html.twig', array('rectangles' => Rectangle::getAll()));
+    });
+
+    $app->post('/add_rectangle', function() use ($app){
+        $rectangle_name = $_POST['rectangle_name'];
+        $rectangl_length = $_POST['rectangle_length'];
+        $rectangle_width = $_POST['rectangle_width'];
+        $id = null;
+        $new_rectangle = new Rectangle($rectangle_name, $rectangle_length, $rectangle_width, $id);
+        $new_rectangle->saveRectangle();
+        return $app['twig']->render('/rectangle/rectangles.html.twig', array('rectangles' => Rectangle::getAll()));
+    });
+
+    $app->get('/rectangle/{id}', function($id) use ($app){
+        $rectangle = Rectangle::findRectangle($id);
+        return $app['twig']->render('/rectangle/rectangle.html.twig', array('rectangle' => $rectangle));
+    });
+
+    //patch
+
+    $app->get('/rectangles_home', function() use ($app){
+        return $app['twig']->render('/rectangle/rectangles.html.twig', array('rectangles' => Rectangle::getAll()));
     });
 
     return $app;

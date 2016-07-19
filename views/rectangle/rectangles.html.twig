@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Rectangles</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Rectangles</h1>
+            </div>
+            <div>
+                {% if rectangles is not empty %}
+                    <h3>Here are the current rectangles. Click to view their dimensions.</h3>
+                    {% for rectangle in rectangles %}
+                        <a href="/rectangle/{{ rectangle.getRectangleId }}">{{ rectangle.getRectangleName }}</a>
+                    {% endfor %}
+                {% endif %}
+                {% if rectangles is empty %}
+                    <h3>There are currently no squares</h3>
+                    <h4>Add one!</h4>
+                {% endif %}
+                <h3>New Rectangle</h3>
+                <form action="/add_rectangle" method="post">
+                    <label for="rectangle_name">Rectangle Name:</label>
+                    <input id="rectangle_name" name="rectangle_name" required>
+                    <label for="rectangle_length">Rectangle Length:</label>
+                    <input id="rectangle_length" name="rectangle_length" required>
+                    <label for="rectangle_width">Rectangle Width:</label>
+                    <input id="rectangle_width" name="rectangle_width" required>
+                    <button type="submit" class="btn btn-success">Create new rectangle</button>
+                </form>
+                <br>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </body>
+</html>
